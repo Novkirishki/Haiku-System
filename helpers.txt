@@ -1,0 +1,16 @@
+Exam helpers:
+1. Rename Solution - right click -> rename
+2. Rename all Projects & files: 
+	- rename project from solution explorer
+	- in properties rename namespaces
+	- close solution
+	- rename folder
+	- exclude project from solution
+	- add existing project
+3. Rename DbContext
+4. Change connection string
+5. Change api string in common -> Assemblies
+
+
+Hints: 
+- use [ValidateModel] attr to validate for null and model in controllers

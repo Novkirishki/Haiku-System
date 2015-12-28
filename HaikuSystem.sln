@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{AF642A5F-0846-4387-87BA-77E6F536AB36}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{BED5EF74-8CE9-44E9-ADE0-8F570DEA1E7E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{9C2F5233-A8C2-4661-983A-0C5FC7D41971}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaikuSystem.Data", "Data\HaikuSystem.Data\HaikuSystem.Data.csproj", "{69D02298-0DA6-4CA5-BB14-310E4D4C0003}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaikuSystem.Data.Models", "Data\HaikuSystem.Data.Models\HaikuSystem.Data.Models.csproj", "{FF458BBD-D3FF-49B7-B2BD-E926BB4EF5CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaikuSystem.Services.Data", "Services\HaikuSystem.Services.Data\HaikuSystem.Services.Data.csproj", "{2C10C45D-97FB-4AEC-ACFA-1B89699CBB83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaikuSystem.Web.Api", "Web\HaikuSystem.Web.Api\HaikuSystem.Web.Api.csproj", "{9522FB71-D5FA-4F3B-85D3-FD16ADD725EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69D02298-0DA6-4CA5-BB14-310E4D4C0003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69D02298-0DA6-4CA5-BB14-310E4D4C0003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69D02298-0DA6-4CA5-BB14-310E4D4C0003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69D02298-0DA6-4CA5-BB14-310E4D4C0003}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF458BBD-D3FF-49B7-B2BD-E926BB4EF5CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF458BBD-D3FF-49B7-B2BD-E926BB4EF5CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF458BBD-D3FF-49B7-B2BD-E926BB4EF5CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF458BBD-D3FF-49B7-B2BD-E926BB4EF5CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C10C45D-97FB-4AEC-ACFA-1B89699CBB83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C10C45D-97FB-4AEC-ACFA-1B89699CBB83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C10C45D-97FB-4AEC-ACFA-1B89699CBB83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C10C45D-97FB-4AEC-ACFA-1B89699CBB83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9522FB71-D5FA-4F3B-85D3-FD16ADD725EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9522FB71-D5FA-4F3B-85D3-FD16ADD725EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9522FB71-D5FA-4F3B-85D3-FD16ADD725EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9522FB71-D5FA-4F3B-85D3-FD16ADD725EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{69D02298-0DA6-4CA5-BB14-310E4D4C0003} = {AF642A5F-0846-4387-87BA-77E6F536AB36}
+		{FF458BBD-D3FF-49B7-B2BD-E926BB4EF5CB} = {AF642A5F-0846-4387-87BA-77E6F536AB36}
+		{2C10C45D-97FB-4AEC-ACFA-1B89699CBB83} = {BED5EF74-8CE9-44E9-ADE0-8F570DEA1E7E}
+		{9522FB71-D5FA-4F3B-85D3-FD16ADD725EC} = {9C2F5233-A8C2-4661-983A-0C5FC7D41971}
+	EndGlobalSection
+EndGlobal
