@@ -12,9 +12,7 @@ namespace HaikuSystem.Web.Api
     {
         public void Configuration(IAppBuilder app)
         {
-            AutoMapperConfig.RegisterMappings("HaikuSystem.Web.Api");
-
-            this.ConfigureAuth(app);
+            AutoMapperConfig.RegisterMappings("HaikuSystem.Web.Api");         
 
             var httpConfig = new HttpConfiguration();
 

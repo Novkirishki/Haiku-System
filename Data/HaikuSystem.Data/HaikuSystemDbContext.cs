@@ -1,11 +1,10 @@
 ﻿namespace HaikuSystem.Data
 {
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using Models;
+    using System.Data.Entity;
 
-    public class HaikuSystemDbContext : IdentityDbContext<User>
+    public class HaikuSystemDbContext : DbContext
     {
-        public HaikuSystemDbContext() : base("DefaultConnection", throwIfV1Schema: false)
+        public HaikuSystemDbContext() : base("DefaultConnection")
         {
         }
 
