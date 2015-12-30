@@ -7,6 +7,8 @@
     using Data.Repositories;
     using Ninject;
     using Ninject.Web.Common;
+    using Services.Data.Contracts;
+    using Services.Data;
 
     public class NinjectConfig
     {
@@ -37,6 +39,8 @@
         private static void RegisterServices(IKernel kernel)
         {
             DependenciesRegistration(kernel);
+
+            kernel.Bind<IUsersService>().To<UsersService>();
         }
     }
 }
