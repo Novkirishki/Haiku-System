@@ -5,17 +5,14 @@
 
     public class Rating
     {
-        [Key, Column(Order = 0)]
+        public int Id { get; set; }
+
         public int HaikuId { get; set; }
 
         public virtual Haiku Haiku { get; set; }
 
-        [Key, Column(Order = 1)]
-        public int UserId { get; set; }
-
-        public virtual User User { get; set; }
-
         [Range(1, 5)]
+        [Required]
         public int Value { get; set; }
     }
 }

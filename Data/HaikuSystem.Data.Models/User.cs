@@ -6,13 +6,11 @@
 
     public class User
     {
-        private ICollection<Rating> ratings;
         private ICollection<Haiku> haikus;
 
         public User()
         {
             this.Haikus = new HashSet<Haiku>();
-            this.Ratings = new HashSet<Rating>();
         }
 
         [Key]
@@ -28,7 +26,6 @@
         [Required]
         [MinLength(3)]
         [MaxLength(30)]
-        [Index(IsUnique = true)]
         public string PublishCode { get; set; }
 
         public virtual ICollection<Haiku> Haikus
@@ -41,19 +38,6 @@
             set
             {
                 this.haikus = value;
-            }
-        }
-
-        public ICollection<Rating> Ratings
-        {
-            get
-            {
-                return this.ratings;
-            }
-
-            set
-            {
-                this.ratings = value;
             }
         }
     }

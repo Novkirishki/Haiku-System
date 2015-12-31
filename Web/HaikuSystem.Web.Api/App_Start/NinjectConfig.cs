@@ -15,7 +15,7 @@
         public static Action<IKernel> DependenciesRegistration = kernel =>
         {
             kernel.Bind<DbContext>().To<HaikuSystemDbContext>().InRequestScope();
-            kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
+            kernel.Bind(typeof(IHaikusService<>)).To(typeof(EfGenericRepository<>));
         };
 
         public static IKernel CreateKernel()
@@ -41,6 +41,7 @@
             DependenciesRegistration(kernel);
 
             kernel.Bind<IUsersService>().To<UsersService>();
+            kernel.Bind<IHaikusService>().To<HaikusService>();
         }
     }
 }

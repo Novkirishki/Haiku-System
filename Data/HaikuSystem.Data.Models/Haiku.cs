@@ -1,5 +1,6 @@
 ﻿namespace HaikuSystem.Data.Models
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -18,6 +19,8 @@
         [Required]
         [MaxLength(1000)]
         public string Text { get; set; }
+
+        public DateTime? DatePublished { get; set; }
 
         public int UserId { get; set; }
 
