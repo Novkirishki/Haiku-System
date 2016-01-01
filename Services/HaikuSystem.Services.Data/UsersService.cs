@@ -8,9 +8,9 @@
 
     public class UsersService : IUsersService
     {
-        private IHaikusService<User> users;
+        private IRepository<User> users;
 
-        public UsersService(IHaikusService<User> users)
+        public UsersService(IRepository<User> users)
         {
             this.users = users;
         }
@@ -46,6 +46,11 @@
             }
 
             return result.Skip(skip).Take(take);
+        }
+
+        public IQueryable<User> GetByPublishCode(string publishCode)
+        {
+            return this.users.All().Where(u => u.PublishCode == publishCode);
         }
 
         public IQueryable<User> GetByUsername(string username)

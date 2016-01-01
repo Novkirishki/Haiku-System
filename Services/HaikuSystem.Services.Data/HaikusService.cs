@@ -8,11 +8,31 @@
 
     public class HaikusService : IHaikusService
     {
-        private IHaikusService<Haiku> haikus;
+        private IRepository<Haiku> haikus;
 
-        public HaikusService(IHaikusService<Haiku> haikus)
+        public HaikusService(IRepository<Haiku> haikus)
         {
             this.haikus = haikus;
+        }
+
+        public void Abuse(int haikuId, string text)
+        {
+            var abusementToAdd = new Abusement
+            {
+                Text = text,
+                CreatedOn = DateTime.Now
+            };
+
+            var haiku = this.GetById(haikuId);
+
+            if (haiku == null)
+            {
+                throw new ArgumentException("Invalid haiku Id");
+            }
+
+            haiku.Abusements.Add(abusementToAdd);
+            this.haikus.Update(haiku);
+            this.haikus.SaveChanges();
         }
 
         public Haiku AddHaiku(string text, int userId)

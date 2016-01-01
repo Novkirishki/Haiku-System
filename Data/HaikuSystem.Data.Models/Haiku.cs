@@ -7,10 +7,12 @@
     public class Haiku
     {
         private ICollection<Rating> ratings;
+        private ICollection<Abusement> abusements;
 
         public Haiku()
         {
             this.Ratings = new HashSet<Rating>();
+            this.Abusements = new HashSet<Abusement>();
         }
 
         [Key]
@@ -36,6 +38,19 @@
             set
             {
                 this.ratings = value;
+            }
+        }
+
+        public ICollection<Abusement> Abusements
+        {
+            get
+            {
+                return this.abusements;
+            }
+
+            set
+            {
+                this.abusements = value;
             }
         }
     }

@@ -27,6 +27,8 @@
         [MinLength(3)]
         [MaxLength(30)]
         public string PublishCode { get; set; }
+        
+        public bool IsAdmin { get; set; }
 
         public virtual ICollection<Haiku> Haikus
         {

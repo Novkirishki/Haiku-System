@@ -4,7 +4,7 @@
     using System.Data.Entity;
     using System.Linq;
 
-    public class EfGenericRepository<T> : IHaikusService<T> where T : class
+    public class EfGenericRepository<T> : IRepository<T> where T : class
     {
         public EfGenericRepository(DbContext context)
         {

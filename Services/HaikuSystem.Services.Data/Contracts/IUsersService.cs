@@ -8,6 +8,8 @@
 
         IQueryable<User> GetByUsername(string username);
 
+        IQueryable<User> GetByPublishCode(string publishCode);
+
         IQueryable<User> GetAll(string sortBy, string sortType, int skip, int take);
     }
 }

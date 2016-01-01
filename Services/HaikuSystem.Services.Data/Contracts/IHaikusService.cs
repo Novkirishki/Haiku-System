@@ -17,5 +17,7 @@
         void Rate(int haikuId, int rating);
 
         void DeleteAll(User user);
+
+        void Abuse(int haikuId, string text);
     }
 }

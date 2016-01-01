@@ -29,6 +29,7 @@
         }
 
         [HttpPost]
+        [ValidateModel]
         [Route("api/haikus/{id}/ratings")]
         public IHttpActionResult RateHaiku([FromUri] int id, [FromBody] RatingRequestModel rating)
         {
@@ -177,6 +178,23 @@
             this.haikus.UpdateHaiku(haiku);
 
             return this.Ok();
+        }
+
+        [HttpPost]
+        [ValidateModel]
+        [Route("api/haikus/{id}/abusements")]
+        public IHttpActionResult AbuseHaiku([FromUri] int id, [FromBody] AbusementRequestModel abusement)
+        {
+            try
+            {
+                this.haikus.Abuse(id, abusement.Text);
+            }
+            catch (ArgumentException ex)
+            {
+                return this.BadRequest(ex.Message);
+            }
+
+            return this.Created("api/Haikus", string.Empty);
         }
     }
 }

@@ -207,6 +207,7 @@
     <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\NinjectConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AbusementsController.cs" />
     <Compile Include="Controllers\HaikusController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -215,6 +216,7 @@
     <Compile Include="Infrastructure\Mappings\IHaveCustomMappings.cs" />
     <Compile Include="Infrastructure\Mappings\IMapFrom.cs" />
     <Compile Include="Infrastructure\Validation\ValidateModelAttribute.cs" />
+    <Compile Include="Models\AbusementRequestModel.cs" />
     <Compile Include="Models\HaikuRequestModel.cs" />
     <Compile Include="Models\HaikuResponseCreatedModel.cs" />
     <Compile Include="Models\HaikuResponseModel.cs" />

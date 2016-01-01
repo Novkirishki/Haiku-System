@@ -16,6 +16,8 @@
 
         public virtual IDbSet<Rating> Ratings { get; set; }
 
+        public virtual IDbSet<Abusement> Abusements { get; set; }
+
         public static HaikuSystemDbContext Create()
         {
             return new HaikuSystemDbContext();
@@ -23,9 +25,6 @@
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-            //modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
-
             base.OnModelCreating(modelBuilder);
         }
     }
