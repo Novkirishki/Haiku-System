@@ -10,6 +10,8 @@
 
         void Delete(Haiku haiku);
 
+        void DeleteById(int id);
+
         Haiku GetById(int id);
 
         IQueryable<Haiku> GetAll(string sortBy, string sortType, int skip, int take);

@@ -57,6 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbusementsService.cs" />
+    <Compile Include="Contracts\IAbusementsService.cs" />
     <Compile Include="Contracts\IHaikusService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="HaikusService.cs" />

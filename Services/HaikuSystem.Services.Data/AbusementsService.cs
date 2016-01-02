@@ -5,7 +5,7 @@
     using System.Linq;
     using HaikuSystem.Data.Repositories;
 
-    class AbusementsService : IAbusementsService
+    public class AbusementsService : IAbusementsService
     {
         private IRepository<Abusement> abusements;
 

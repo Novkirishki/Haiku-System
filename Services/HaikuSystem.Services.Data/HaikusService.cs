@@ -63,6 +63,12 @@
             this.haikus.SaveChanges();
         }
 
+        public void DeleteById(int id)
+        {
+            this.haikus.Delete(id);
+            this.haikus.SaveChanges();
+        }
+
         public IQueryable<Haiku> GetAll(string sortBy, string sortType, int skip, int take)
         {
             var result = this.haikus.All();

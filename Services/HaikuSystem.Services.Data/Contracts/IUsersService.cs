@@ -11,5 +11,8 @@
         IQueryable<User> GetByPublishCode(string publishCode);
 
         IQueryable<User> GetAll(string sortBy, string sortType, int skip, int take);
+
+        void DeleteById(int id);
+        void MakeVIP(int id);
     }
 }

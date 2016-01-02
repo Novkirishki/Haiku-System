@@ -42,6 +42,7 @@
 
             kernel.Bind<IUsersService>().To<UsersService>();
             kernel.Bind<IHaikusService>().To<HaikusService>();
+            kernel.Bind<IAbusementsService>().To<AbusementsService>();
         }
     }
 }

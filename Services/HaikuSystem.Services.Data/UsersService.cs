@@ -15,6 +15,12 @@
             this.users = users;
         }
 
+        public void DeleteById(int id)
+        {
+            this.users.Delete(id);
+            this.users.SaveChanges();
+        }
+
         public IQueryable<User> GetAll(string sortBy, string sortType, int skip, int take)
         {
             var result = this.users.All();
@@ -45,7 +51,7 @@
                     break;
             }
 
-            return result.Skip(skip).Take(take);
+            return result.OrderByDescending(u => u.IsVIP).Skip(skip).Take(take);
         }
 
         public IQueryable<User> GetByPublishCode(string publishCode)
@@ -56,6 +62,15 @@
         public IQueryable<User> GetByUsername(string username)
         {
             return this.users.All().Where(u => u.Username == username);
+        }
+
+        public void MakeVIP(int id)
+        {
+            var user = this.users.GetById(id);
+            user.IsVIP = true;
+
+            this.users.Update(user);
+            this.users.SaveChanges();
         }
 
         public void Register(string username, string publishCode)

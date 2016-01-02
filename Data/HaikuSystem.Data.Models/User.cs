@@ -30,6 +30,8 @@
         
         public bool IsAdmin { get; set; }
 
+        public bool IsVIP { get; set; }
+
         public virtual ICollection<Haiku> Haikus
         {
             get
