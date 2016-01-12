@@ -8,7 +8,9 @@
     using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Web.Http;
+    using System.Web.Http.Cors;
 
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/users")]
     public class UsersController : ApiController
     {

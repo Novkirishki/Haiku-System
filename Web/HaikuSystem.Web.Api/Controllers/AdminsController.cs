@@ -5,8 +5,10 @@
     using Models;
     using System.Linq;
     using System.Web.Http;
+    using System.Web.Http.Cors;
 
     [RoutePrefix("api/admins")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AdminsController : ApiController
     {
         private IHaikusService haikus;

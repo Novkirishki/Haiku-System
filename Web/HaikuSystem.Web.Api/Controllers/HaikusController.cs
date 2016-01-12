@@ -8,7 +8,9 @@
     using System;
     using System.Linq;
     using System.Web.Http;
+    using System.Web.Http.Cors;
 
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class HaikusController : ApiController
     {
         private IHaikusService haikus;
