@@ -9,10 +9,12 @@
     public class HaikusService : IHaikusService
     {
         private IRepository<Haiku> haikus;
+        private IRepository<Rating> ratings;
 
-        public HaikusService(IRepository<Haiku> haikus)
+        public HaikusService(IRepository<Haiku> haikus, IRepository<Rating> ratings)
         {
             this.haikus = haikus;
+            this.ratings = ratings;
         }
 
         public void Abuse(int haikuId, string text)
@@ -23,7 +25,7 @@
                 CreatedOn = DateTime.Now
             };
 
-            var haiku = this.GetById(haikuId);
+            var haiku = this.GetById(haikuId).FirstOrDefault();
 
             if (haiku == null)
             {
@@ -102,9 +104,9 @@
             return result.Skip(skip).Take(take);
         }
 
-        public Haiku GetById(int id)
+        public IQueryable<Haiku> GetById(int id)
         {
-            return this.haikus.All().Where(h => h.Id == id).FirstOrDefault();
+            return this.haikus.All().Where(h => h.Id == id);
         }
 
         public void Rate(int haikuId, int rating)
@@ -114,7 +116,7 @@
                 Value = rating
             };
 
-            var haiku = this.GetById(haikuId);
+            var haiku = this.GetById(haikuId).FirstOrDefault();
 
             if (haiku == null)
             {
@@ -128,7 +130,13 @@
 
         public void UpdateHaiku(Haiku haiku)
         {
-            haiku.Ratings.Clear();
+            foreach (var rating in haiku.Ratings)
+            {
+                this.ratings.Delete(rating);
+            }
+
+            this.ratings.SaveChanges();
+
             haiku.DatePublished = DateTime.Now;
             this.haikus.Update(haiku);
             this.haikus.SaveChanges();

@@ -30,6 +30,14 @@
             return this.Ok(result);
         }
 
+        [HttpGet]
+        public IHttpActionResult Get(int id)
+        {
+            var result = this.haikus.GetById(id).ProjectTo<HaikuResponseModel>().FirstOrDefault();
+
+            return this.Ok(result);
+        }
+
         [HttpPost]
         [ValidateModel]
         [Route("api/haikus/{id}/ratings")]
@@ -97,7 +105,7 @@
                 return this.Unauthorized();
             }
 
-            var haiku = this.haikus.GetById(haikuId);
+            var haiku = this.haikus.GetById(haikuId).FirstOrDefault();
 
             if (haiku == null)
             {
@@ -164,7 +172,7 @@
                 return this.Unauthorized();
             }
 
-            var haiku = this.haikus.GetById(haikuId);
+            var haiku = this.haikus.GetById(haikuId).FirstOrDefault();
 
             if (haiku == null)
             {
