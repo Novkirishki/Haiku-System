@@ -22,41 +22,9 @@
             this.abusements = abusements;
         }
 
-        [HttpDelete]
-        [Route("{username}/haikus/{id}")]
-        public IHttpActionResult DeleteHaikuAdmin([FromUri]string username, int id)
-        {
-            if (!Request.Headers.Contains("PublishCode"))
-            {
-                return this.Unauthorized();
-            }
-
-            var publishCode = Request.Headers.GetValues("PublishCode").FirstOrDefault();
-            var user = this.users.GetByUsername(username).FirstOrDefault();
-
-            if (user == null)
-            {
-                return this.BadRequest("Invalid username");
-            }
-
-            if (!(user.PublishCode == publishCode))
-            {
-                return this.Unauthorized();
-            }
-
-            if (!user.IsAdmin)
-            {
-                return this.Unauthorized();
-            }
-
-            this.haikus.DeleteById(id);
-
-            return this.Ok();
-        }
-
         [HttpGet]
-        [Route("{username}/abusements")]
-        public IHttpActionResult Get([FromUri]string username, int skip = 0, int take = 10)
+        [Route("abusements")]
+        public IHttpActionResult Get(int skip = 0, int take = 10)
         {
             if (!Request.Headers.Contains("PublishCode"))
             {
@@ -64,19 +32,8 @@
             }
 
             var publishCode = Request.Headers.GetValues("PublishCode").FirstOrDefault();
-            var user = this.users.GetByUsername(username).FirstOrDefault();
 
-            if (user == null)
-            {
-                return this.BadRequest("Invalid username");
-            }
-
-            if (!(user.PublishCode == publishCode))
-            {
-                return this.Unauthorized();
-            }
-
-            if (!user.IsAdmin)
+            if (!this.users.IsAdmin(publishCode))
             {
                 return this.Unauthorized();
             }
@@ -87,8 +44,8 @@
         }
 
         [HttpDelete]
-        [Route("{username}/users/{id}")]
-        public IHttpActionResult DeleteUser([FromUri] string username, int id)
+        [Route("delete/{username}")]
+        public IHttpActionResult DeleteUser([FromUri] string username)
         {
             if (!Request.Headers.Contains("PublishCode"))
             {
@@ -96,31 +53,20 @@
             }
 
             var publishCode = Request.Headers.GetValues("PublishCode").FirstOrDefault();
-            var user = this.users.GetByUsername(username).FirstOrDefault();
 
-            if (user == null)
-            {
-                return this.BadRequest("Invalid username");
-            }
-
-            if (!(user.PublishCode == publishCode))
+            if (!this.users.IsAdmin(publishCode))
             {
                 return this.Unauthorized();
             }
 
-            if (!user.IsAdmin)
-            {
-                return this.Unauthorized();
-            }
-
-            this.users.DeleteById(id);
+            this.users.DeleteByUsername(username);
 
             return this.Ok();
         }
 
         [HttpPut]
-        [Route("{username}/users/{id}")]
-        public IHttpActionResult MakeUserVIP([FromUri] string username, int id)
+        [Route("users/promote/{username}")]
+        public IHttpActionResult MakeUserVIP([FromUri] string username)
         {
             if (!Request.Headers.Contains("PublishCode"))
             {
@@ -135,17 +81,12 @@
                 return this.BadRequest("Invalid username");
             }
 
-            if (!(user.PublishCode == publishCode))
+            if (!this.users.IsAdmin(publishCode))
             {
                 return this.Unauthorized();
             }
 
-            if (!user.IsAdmin)
-            {
-                return this.Unauthorized();
-            }
-
-            this.users.MakeVIP(id);
+            this.users.MakeVIP(user.Id);
 
             return this.Ok();
         }

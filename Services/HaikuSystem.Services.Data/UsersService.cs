@@ -15,9 +15,10 @@
             this.users = users;
         }
 
-        public void DeleteById(int id)
+        public void DeleteByUsername(string username)
         {
-            this.users.Delete(id);
+            var user = this.GetByUsername(username).FirstOrDefault();
+            this.users.Delete(user);
             this.users.SaveChanges();
         }
 
@@ -77,6 +78,18 @@
         public IQueryable<User> GetByUsername(string username)
         {
             return this.users.All().Where(u => u.Username == username);
+        }
+
+        public bool IsAdmin(string publishCode)
+        {
+            var user = this.users.All().Where(u => u.PublishCode == publishCode).FirstOrDefault();
+
+            if (user != null)
+            {
+                return user.IsAdmin;
+            }
+
+            return false;
         }
 
         public void MakeVIP(int id)

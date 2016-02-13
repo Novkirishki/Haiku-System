@@ -12,7 +12,10 @@
 
         IQueryable<User> GetAll(string sortBy, string sortType, int skip, int take);
 
-        void DeleteById(int id);
+        void DeleteByUsername(string username);
+
         void MakeVIP(int id);
+
+        bool IsAdmin(string publishCode);
     }
 }

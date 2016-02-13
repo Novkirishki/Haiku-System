@@ -93,28 +93,31 @@
             }
 
             var publishCode = Request.Headers.GetValues("PublishCode").FirstOrDefault();
-            var user = this.users.GetByUsername(username).FirstOrDefault();
-
-            if (user == null)
-            {
-                return this.BadRequest("Invalid username");
-            }
-
-            if (!(user.PublishCode == publishCode))
-            {
-                return this.Unauthorized();
-            }
-
             var haiku = this.haikus.GetById(haikuId).FirstOrDefault();
 
-            if (haiku == null)
+            if (!this.users.IsAdmin(publishCode))
             {
-                return this.BadRequest("Invalid haiku Id");
-            }
+                var user = this.users.GetByUsername(username).FirstOrDefault();
 
-            if (haiku.UserId != user.Id)
-            {
-                return this.Unauthorized();
+                if (user == null)
+                {
+                    return this.BadRequest("Invalid username");
+                }
+
+                if (!(user.PublishCode == publishCode))
+                {
+                    return this.Unauthorized();
+                }
+                
+                if (haiku == null)
+                {
+                    return this.BadRequest("Invalid haiku Id");
+                }
+
+                if (haiku.UserId != user.Id)
+                {
+                    return this.Unauthorized();
+                }
             }
 
             this.haikus.Delete(haiku);
