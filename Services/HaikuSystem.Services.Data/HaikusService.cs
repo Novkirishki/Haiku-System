@@ -130,7 +130,8 @@
 
         public void UpdateHaiku(Haiku haiku)
         {
-            foreach (var rating in haiku.Ratings)
+            var ratingsToBeDeleted = this.ratings.All().Where(r => r.HaikuId == haiku.Id);
+            foreach (var rating in ratingsToBeDeleted)
             {
                 this.ratings.Delete(rating);
             }
